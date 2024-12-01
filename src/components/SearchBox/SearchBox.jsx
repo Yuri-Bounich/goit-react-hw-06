@@ -6,14 +6,14 @@ import { searchContact } from '../../redux/filtersSlice.js';
 const SearchBox = () => {
   const dispatch = useDispatch();
 
+  const handleChange = e => {
+    dispatch(searchContact(e.target.value));
+  };
+
   return (
     <label className={s.input}>
       <span>Find contacts by name</span>
-      <input
-        type="text"
-        onChange={(e = dispatch(searchContact(e.target.value)))}
-        name="search"
-      />
+      <input type="text" onChange={handleChange} name="search" />
     </label>
   );
 };
