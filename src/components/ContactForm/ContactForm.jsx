@@ -2,8 +2,9 @@ import s from './ContactForm.module.css';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContacts } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
+import { store } from '../../redux/store';
 
 const ContactForm = () => {
   const orderSchema = Yup.object().shape({
@@ -16,12 +17,15 @@ const ContactForm = () => {
   const onSubmit = (values, options) => {
     const newContact = {
       id: nanoid(),
-      name: values.name,
-      number: values.number,
+      name: values.login,
+      number: values.password,
     };
-    dispatch(addContacts(newContact)); // Через dispatch використовуємо addContacts і передаємо туди newContact
-    // console.log(values);
+    dispatch(addContact(newContact)); // Через dispatch використовуємо addContacts і передаємо туди newContact
+    console.log(values);
 
+    console.log('State:', store.getState());
+    console.log('New Contact Added:', newContact);
+    console.log('Redux State:', store.getState()); // Потрібен доступ до store
     options.resetForm();
   };
 
