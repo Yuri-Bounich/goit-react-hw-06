@@ -9,9 +9,9 @@ const slice = createSlice({
   initialState,
   reducers: {
     changeFilter: (state, action) => {
-      console.log('Previous Filter State:', state.filters);
+      // console.log('Previous Filter State:', state.filters);
       state.filters = action.payload;
-      console.log('Updated Filter State:', state.filters);
+      // console.log('Updated Filter State:', state.filters);
     },
   },
 });

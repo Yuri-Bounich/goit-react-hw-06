@@ -6,16 +6,15 @@ import { selectNameFilter } from '../../redux/filtersSlice';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
-  console.log('Contacts:', contacts);
+  // console.log('Contacts:', contacts);
 
   const filter = useSelector(selectNameFilter);
 
   const filteredData = contacts.filter(
     item => item.name && item.name.toLowerCase().includes(filter.toLowerCase())
   );
-  console.log(filteredData);
+  // console.log(filteredData);
 
-  // const dispatch = useDispatch();
   if (!contacts.length) {
     return <p>No contacts available</p>; // Повідомлення, якщо список порожній
   }
