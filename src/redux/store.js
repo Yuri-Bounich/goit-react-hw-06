@@ -19,21 +19,18 @@ const rootReducer = combineReducers({
   filter: filterReducer,
 });
 
-const persistConfigContacts = {
-  key: 'contacts',
+const persistConfig = {
+  key: 'root',
   version: 1,
   storage,
   blacklist: ['filter'],
 };
 
 // Обгортаємо rootReducer у persistReducer
-const persistedReducerContacts = persistReducer(
-  persistConfigContacts,
-  rootReducer
-);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducerContacts,
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -42,4 +39,4 @@ export const store = configureStore({
     }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);

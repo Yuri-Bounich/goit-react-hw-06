@@ -9,7 +9,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action) => {
-      console.log('Adding Contact:', action.payload);
+      // console.log('Adding Contact:', action.payload);
       state.items.push(action.payload);
     },
     deleteContact: (state, action) => {
